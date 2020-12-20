@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Notifications\NewUser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -27,12 +28,19 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'condominio' => $input['condominio'],
             'casa' => $input['casa'],
             'password' => Hash::make($input['password']),
         ]);
+
+        $admin = User::where('admin', 1)->first();
+        if ($admin) {
+            $admin->notify(new NewUser($user));
+        }
+
+        return $user;
     }
 }

@@ -60,4 +60,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function approve()
+    {
+        $this->approved_at = date('Y-m-d h:i:s');
+        $this->save();
+    }
 }
