@@ -1,7 +1,10 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <div class='text-center'>
+                <i class="far fa-thumbs-up fa-5x text-blue-800"></i>           
+                <span style="font-size:5em" class="font-extrabold text-blue-800 flex justify-center">Alpha Recomenda</span>                                 
+            </div>  
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -13,6 +16,7 @@
         @endif
 
         <form method="POST" action="{{ route('login') }}">
+            <h1 style="font-size: 2em;" class="mb-3">Entrar</h1>
             @csrf
 
             <div>

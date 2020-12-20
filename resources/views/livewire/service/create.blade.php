@@ -48,10 +48,13 @@
         </div>
 
         <div class="col-span-1 mt-5 text-right">
+            <a href="{{ url('servicos') }}" class="px-4 py-2 text-center border border-transparent bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-black font-bold rounded-lg mr-2">
+                <i class="mr-2 fas fa-arrow-left"></i> Voltar
+            </a>
             <button type="submit" 
                 wire:loading.class="invisible"                 
                 wire:target="submit"
-                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-white tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
                 <i class="fas fa-save mr-1"></i> Salvar
             </button>
             <div wire:loading wire:target="submit">

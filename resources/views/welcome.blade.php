@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Alpha Recomenda</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,8 +21,11 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
            
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">                
-                <span style="font-size:5em" class="font-extrabold text-blue-800 flex justify-center">Alpha Recomenda</span>             
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">   
+                <div class='text-center'>
+                    <i class="far fa-thumbs-up fa-5x text-blue-800"></i>           
+                    <span style="font-size:5em" class="font-extrabold text-blue-800 flex justify-center">Alpha Recomenda</span>                                 
+                </div>  
                 <span class="flex justify-center">recomendação de serviços da região</span>       
 
                 <div class="mt-8 grid grid-cols-3 space-x-5">
