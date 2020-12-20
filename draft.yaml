@@ -1,0 +1,19 @@
+models:
+  Service:
+    name: string
+    contact: string
+  Comment:
+    comment: string
+    recommended: boolean default(1)
+    service_id: id foreign
+    user_id: id foreign
+    relationships:
+      belongsTo: Service, User    
+
+controllers:
+  Service: 
+    resource
+  Comment:
+    resource
+
+seeders: Service, Comment

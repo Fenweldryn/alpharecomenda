@@ -1,0 +1,31 @@
+created:
+    - app/Http/Controllers/ServiceController.php
+    - app/Http/Controllers/CommentController.php
+    - database/factories/ServiceFactory.php
+    - database/factories/CommentFactory.php
+    - database/migrations/2020_12_16_221447_create_services_table.php
+    - database/migrations/2020_12_16_221448_create_comments_table.php
+    - app/Models/Service.php
+    - app/Models/Comment.php
+    - database/seeders/ServiceSeeder.php
+    - database/seeders/CommentSeeder.php
+    - tests/Feature/Http/Controllers/ServiceControllerTest.php
+    - tests/Feature/Http/Controllers/CommentControllerTest.php
+    - app/Http/Requests/ServiceStoreRequest.php
+    - app/Http/Requests/ServiceUpdateRequest.php
+    - app/Http/Requests/CommentStoreRequest.php
+    - app/Http/Requests/CommentUpdateRequest.php
+    - resources/views/service/index.blade.php
+    - resources/views/service/create.blade.php
+    - resources/views/service/show.blade.php
+    - resources/views/service/edit.blade.php
+    - resources/views/comment/index.blade.php
+    - resources/views/comment/create.blade.php
+    - resources/views/comment/show.blade.php
+    - resources/views/comment/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    Models\User: {  }
+    Service: { name: string, contact: string }
+    Comment: { comment: string, recommended: 'boolean default(1)', service_id: 'id foreign', user_id: 'id foreign', relationships: { belongsTo: 'Service, User' } }
