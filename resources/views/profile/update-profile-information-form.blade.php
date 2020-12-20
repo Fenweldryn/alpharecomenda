@@ -65,6 +65,18 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="condominio" value="{{ __('Condomínio') }}" />
+            <x-jet-input id="condominio" type="condominio" class="mt-1 block w-full" wire:model.defer="state.condominio" />
+            <x-jet-input-error for="condominio" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="casa" value="{{ __('Lote/Casa') }}" />
+            <x-jet-input id="casa" type="casa" class="mt-1 block w-full" wire:model.defer="state.casa" />
+            <x-jet-input-error for="casa" class="mt-2" />
+        </div>
     </x-slot>
 
     <x-slot name="actions">

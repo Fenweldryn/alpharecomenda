@@ -37,16 +37,18 @@
                       <i class="fas fa-phone-alt mr-1"></i> {{ $service->phone }}
                     </p>                  
                     <p class="mt-1">
-                      <i class="fas fa-email mr-1"></i> {{ $service->email }}
-                    </p>                  
-                    <p class='mt-1'>
                       <i class="fas fa-map-marker-alt mr-1"></i> {{ $service->city }}
-                    </p>
+                    </p>                  
+                    @if ($service->email)
+                    <p class='mt-1'>
+                      <i class="fas fa-envelope mr-1"></i> {{ $service->email }}
+                    </p>                        
+                    @endif
                 </div>
               </div>
             </div>
   
-            <div class='w-full p-4 pt-1'>
+            <div class='w-full p-4 pt-0'>
               <p>
                 <label for="" class="font-bold"> Palavras-chave:</label> 
                 @foreach ($service->tags as $tag)

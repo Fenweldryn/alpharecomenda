@@ -24,6 +24,21 @@
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="condominio" value="{{ __('Condomínio') }} " />
+                <select id="condominio" class="form-input rounded-md shadow-sm block mt-1 w-full" type="condominio" name="condominio" required>
+                    <option value=""></option>
+                    <option value="Alpha 1">Alpha 1</option>
+                    <option value="Alpha 2">Alpha 2</option>
+                    <option value="Alpha 3">Alpha 3</option>
+                </select>
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="casa" value="{{ __('Lote/Casa') }}" />
+                <x-jet-input id="casa" class="block mt-1 w-full" type="casa" name="casa" :value="old('casa')" required placeholder="i2-10"/>
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
