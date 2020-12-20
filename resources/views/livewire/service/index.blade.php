@@ -23,7 +23,7 @@
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 mt-5 mx-3 md:mx-0" wire:loading.class="invisible">
         @foreach ($services as $service)
-          <div class="flex flex-wrap bg-white rounded-lg border-l-8 border-blue-800 w-full">
+          <div class="flex flex-wrap bg-white rounded-lg border-l-8 border-blue-800 w-full" wire:key="card-{{ $service->id }}">
             <div class="rounded-lg w-full">          
               <div class="w-full p-4">
                 <div class='relative'>
@@ -56,7 +56,7 @@
             </div>
   
             <div class='w-full'>
-              @livewire('reaction-buttons', ['service' => $service])
+              @livewire('reaction-buttons', ['service' => $service], key($service->id))
             </div>
           </div>          
         @endforeach

@@ -1,10 +1,10 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <div class='text-center'>
-                <i class="far fa-thumbs-up fa-5x text-blue-800"></i>           
-                <span style="font-size:5em" class="font-extrabold text-blue-800 flex justify-center">Alpha Recomenda</span>                                 
-            </div>  
+            <div class='text-center text-5xl leading-10 md:leading-none md:text-6xl'>
+                <i class="far fa-thumbs-up text-blue-800"></i>           
+                <a href="{{url('')}}" class="font-extrabold text-blue-800 flex justify-center">Alpha Recomenda</a>                                 
+            </div> 
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
