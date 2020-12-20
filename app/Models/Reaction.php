@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Reaction extends Model
 {
     use HasFactory;
 
@@ -33,16 +33,6 @@ class Comment extends Model
         'user_id' => 'integer',
     ];
 
-
-    public function service()
-    {
-        return $this->belongsTo(\App\Models\Service::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(\App\Models\User::class);
-    }
 
     public function service()
     {

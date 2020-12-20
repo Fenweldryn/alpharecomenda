@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Service;
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-
-Route::get('servicos', Service\Index::class)->name('service');
-Route::get('servicos/cadastrar', Service\Create::class)->name('service.create');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('servicos', Service\Index::class)->name('service');
+    Route::get('servicos/cadastrar', Service\Create::class)->name('service.create');
+    Route::get('servicos/{service}/editar', Service\Edit::class);
+});

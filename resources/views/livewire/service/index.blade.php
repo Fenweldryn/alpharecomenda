@@ -7,8 +7,8 @@
 
     <div class=" bg-white mb-10 rounded-md flex items-center w-full p-3 shadow-sm border border-gray-200">
       <button class="outline-none focus:outline-none"><i class="fas fa-search h-4"></i></button>
-      <input type="text" wire:model="search" placeholder="busque um serviço" class="w-full pl-4 outline-none focus:outline-none bg-transparent rounded-md"> 
-      <button class="outline-none focus:outline-none" wire:click="$set('search', '')"><i class="fas fa-times h-4"></i></button>     
+      <input type="text" wire:model.debounce.300ms="search" placeholder="busque um serviço" class="w-full pl-4 outline-none focus:outline-none bg-transparent rounded-md"> 
+      <button class="outline-none focus:outline-none {{ $search ? 'visible' : 'invisible' }}" wire:click="$set('search', '')"><i class="fas fa-times h-4"></i></button>     
     </div>
 
     <a type="button"                              
@@ -28,7 +28,7 @@
               <div class="w-full p-4">
                 <div class='relative'>
                   <h2 class="font-bold text-2xl text-blue-700 inline">{{$service->name}}</h2>
-                  <a href="" class='absolute top-2 right-2'><i class="fas fa-pencil-alt text-blue-300 float-right"></i></a>
+                  <a href="{{ url('servicos',$service->id) }}/editar" class='absolute top-2 right-2'><i class="fas fa-pencil-alt text-blue-300 float-right"></i></a>
                 </div>
                 <div class="py-2 text-sm text-gray-400">
                     <p class="mt-1">
@@ -53,13 +53,8 @@
               </p>
             </div>
   
-            <div class="p-4 flex space-x-4 self-end w-full">
-              <a href="#" class="w-1/2 px-4 py-3 text-center bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-black font-bold rounded-lg">
-                <i class="fas fa-thumbs-down"></i>
-              </a>
-              <a href="#" class="w-1/2 px-4 py-3 text-center text-blue-100 bg-blue-800 rounded-lg hover:bg-blue-700 hover:text-white font-bold">
-                <i class="fas fa-thumbs-up"></i>
-              </a>
+            <div class='w-full'>
+              @livewire('reaction-buttons', ['service' => $service])
             </div>
           </div>          
         @endforeach

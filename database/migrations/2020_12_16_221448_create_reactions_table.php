@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateReactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class CreateCommentsTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('reactions', function (Blueprint $table) {
             $table->id();
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->boolean('recommended');
             $table->foreignId('service_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
@@ -34,6 +34,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('reactions');
     }
 }
