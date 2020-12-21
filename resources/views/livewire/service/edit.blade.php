@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <form wire:submit.prevent="submit" class='grid gap-4 w-1/3'>
+    <form wire:submit.prevent="submit" class='grid gap-4 w-1/2'>
         @if (session()->has('success'))
             <div class="text-green-500 bg-white shadow-md rounded-md p-4 ">
                 <i class="fas fa-check mr-2"> {{ session('success') }}</i>
@@ -48,6 +48,15 @@
         </div>
 
         <div class="col-span-1 mt-5 text-right">
+            <a href="{{ url('servicos') }}" class="px-4 py-2 text-center border border-transparent bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-black font-bold rounded-lg mr-2">
+                <i class="mr-2 fas fa-arrow-left"></i> Voltar
+            </a>
+            {{-- <button type="submit" 
+                wire:loading.class="invisible"                 
+                wire:target="submit"
+                class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:shadow-outline-red disabled:opacity-25 transition ease-in-out duration-150">
+                <i class="fas fa-trash mr-1"></i> Excluir
+            </button> --}}
             <button type="submit" 
                 wire:loading.class="invisible"                 
                 wire:target="submit"
