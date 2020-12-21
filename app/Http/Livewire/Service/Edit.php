@@ -33,7 +33,7 @@ class Edit extends Component
     public function submit()
     {
         $this->validate();
-        $phoneClean = Str::of($this->phone)->trim()->replace(['-', '+55', ' '], '');        
+        $phoneClean = Str::of($this->service->phone)->trim()->replace(['-', '+55', ' '], '');        
 
         $this->service->update([
             'name' => $this->service->name,

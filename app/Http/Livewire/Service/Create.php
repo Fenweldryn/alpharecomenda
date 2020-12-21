@@ -13,6 +13,7 @@ class Create extends Component
     public $phone;
     public $email;
     public $keywords;
+    public $similarServices;
     
     protected $rules = [
         'name' => 'required|min:3',        
@@ -22,8 +23,21 @@ class Create extends Component
         "keywords" => "required"                 
     ];
 
+    public function mount()
+    {
+        $this->similarServices = [];
+    }
+
     public function render()
     {
+        if ($this->name) {            
+            $nameClean = Str::of($this->name)->lower();
+            $this->similarServices = Service::select('services.*')
+            ->where('services.name', 'LIKE', "%$nameClean%")
+            ->distinct()
+            ->limit(4)
+            ->get();
+        } 
         return view('livewire.service.create');
     }
 
