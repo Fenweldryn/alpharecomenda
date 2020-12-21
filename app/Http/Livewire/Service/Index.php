@@ -20,6 +20,7 @@ class Index extends Component
             $query = Service::select('services.*')->join('taggables', 'taggable_id', '=', 'services.id' )->join('tags', 'taggables.tag_id', '=', 'tags.id');
             foreach ($tags as $tag) {
                 $query->orWhere('tags.name', 'LIKE', "%$tag%");
+                $query->orWhere('services.name', 'LIKE', "%$tag%");
             }
             $this->services = $query->distinct()->get();
         } else {

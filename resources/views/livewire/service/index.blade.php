@@ -34,7 +34,7 @@
                 </div>
                 <div class="py-2 text-sm text-gray-400">
                     <p class="mt-1">
-                      <i class="fas fa-phone-alt mr-1"></i> {{ $service->phone }}
+                      <a target="_blank" href="https://wa.me/55{{ $service->phone }}"> <i class="fas fa-phone-alt mr-1"></i> {{ $service->phone }}</a>
                     </p>                  
                     <p class="mt-1">
                       <i class="fas fa-map-marker-alt mr-1"></i> {{ $service->city }}
