@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <form wire:submit.prevent="submit" class='grid gap-4 w-1/2'>
+    <form wire:submit.prevent="submit" class='grid gap-4 w-auto mx-5 md:mx-0 md:w-1/2'>
         @if (session()->has('success'))
             <div class="text-green-500 bg-white shadow-md rounded-md p-4 ">
                 <i class="fas fa-check mr-2"> {{ session('success') }}</i>
