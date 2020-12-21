@@ -30,12 +30,13 @@ class Create extends Component
     public function submit()
     {
         $this->validate();
+        $phoneClean = Str::of($this->phone)->trim()->replace(['-', '+55', ' '], '');        
 
         $service = Service::create([
             'name' => $this->name,
             'email' => $this->email,
             'city' => $this->city,
-            'phone' => $this->phone,
+            'phone' => $phoneClean,
             'user_id' => auth()->user()->id
         ]);
         

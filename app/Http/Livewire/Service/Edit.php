@@ -33,12 +33,13 @@ class Edit extends Component
     public function submit()
     {
         $this->validate();
+        $phoneClean = Str::of($this->phone)->trim()->replace(['-', '+55', ' '], '');        
 
         $this->service->update([
             'name' => $this->service->name,
             'email' => $this->service->email,
             'city' => $this->service->city,
-            'phone' => $this->service->phone, //TODO: trim e remover espaços
+            'phone' => $phoneClean,
         ]);
 
         $keywords = Str::of($this->keywords)->trim()->lower()->explode(' ');
