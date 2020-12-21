@@ -42,7 +42,7 @@ class Edit extends Component
             'phone' => $phoneClean,
         ]);
 
-        $keywords = Str::of($this->keywords)->trim()->lower()->explode(' ');
+        $keywords = Str::of($this->keywords)->trim()->lower()->replace([',', '.'], '')->explode(' ');
         $this->service->syncTags($keywords);
 
         session()->flash('success', 'Serviço editado com sucesso.');

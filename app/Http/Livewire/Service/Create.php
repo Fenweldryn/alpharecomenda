@@ -13,7 +13,7 @@ class Create extends Component
     public $phone;
     public $email;
     public $keywords;
-    public $similarServices;
+    public $similarServices = [];
     
     protected $rules = [
         'name' => 'required|min:3',        
@@ -22,11 +22,6 @@ class Create extends Component
         "email" => "nullable|email",       
         "keywords" => "required"                 
     ];
-
-    public function mount()
-    {
-        $this->similarServices = [];
-    }
 
     public function render()
     {
@@ -54,7 +49,7 @@ class Create extends Component
             'user_id' => auth()->user()->id
         ]);
         
-        $keywords = Str::of($this->keywords)->trim()->lower()->explode(' ');
+        $keywords = Str::of($this->keywords)->trim()->lower()->replace([',', '.'], '')->explode(' ');
         $service->attachTags($keywords);
 
         session()->flash('success', 'Serviço cadastrado com sucesso.');

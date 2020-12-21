@@ -7,7 +7,7 @@
 
     <form wire:submit.prevent="submit" class='grid gap-4 w-auto mx-5 md:mx-0 md:w-1/2'>
         @if (session()->has('success'))
-            <div class="text-green-500 bg-white shadow-md rounded-md p-4 ">
+            <div class="text-green-500 bg-white shadow-md rounded-md p-3 col-span-1">
                 <i class="fas fa-check mr-2"> {{ session('success') }}</i>
             </div>
         @endif
@@ -48,7 +48,7 @@
         </div>
 
         @if (session()->has('success'))
-            <div class="text-green-500 bg-white shadow-md rounded-md p-4 ">
+            <div class="text-green-500 bg-white shadow-md rounded-md p-3 mt-3 col-span-1">
                 <i class="fas fa-check mr-2"> {{ session('success') }}</i>
             </div>
         @endif

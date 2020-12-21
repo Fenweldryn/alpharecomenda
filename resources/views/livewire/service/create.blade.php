@@ -6,15 +6,15 @@
     </x-slot>
 
     <form wire:submit.prevent="submit" class='grid gap-4 grid-cols-1 md:grid-cols-2 w-auto mx-5 md:mx-0 md:w-auto'>
-        @if (session()->has('success'))
-            <div class="text-green-500 bg-white shadow-md rounded-md p-4 ">
-                <i class="fas fa-check mr-2"> {{ session('success') }}</i>
-            </div>
-        @endif
         <div>            
+            @if (session()->has('success'))
+                <div class="text-green-500 bg-white shadow-md rounded-md p-3">
+                    <i class="fas fa-check mr-2"> {{ session('success') }}</i>
+                </div>            
+            @endif
             <div class="col-span-1">
                 <label for="name">Nome</label>
-                <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" wire:model.debounce.300ms="name" placeholder="busque um serviço">
+                <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" wire:model.debounce.300ms="name" placeholder="">
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
     
@@ -48,7 +48,7 @@
             </div>
             
             @if (session()->has('success'))
-                <div class="text-green-500 bg-white shadow-md rounded-md p-4 ">
+                <div class="text-green-500 bg-white shadow-md rounded-md p-3 mt-3 col-span-1">
                     <i class="fas fa-check mr-2"> {{ session('success') }}</i>
                 </div>
             @endif
@@ -68,12 +68,12 @@
             </div>
         </div>
 
-        <div class="ml-0 md:ml-5">
-            <label for="" class='block'>Serviços similares cadastrados</label>
+        <div class="md:ml-5">
+            <label for="" class='block'>Serviços de mesmo nome cadastrados</label>
             <div wire:loading wire:target="name" class='block mt-5'>
                 <i class="fas fa-spinner fa-pulse fa-5x"></i>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-7 mt-5 mx-3 md:mx-0" wire:target="name" wire:loading.class="invisible">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-7 mt-5" wire:target="name" wire:loading.class="invisible">
                 @foreach ($similarServices as $service)
                   <div class="flex flex-wrap bg-white rounded-lg border-l-8 border-blue-800 w-full" wire:key="card-{{ $service->id }}">
                     <div class="rounded-lg w-full">          
@@ -115,5 +115,7 @@
         </div>
     </form>
 
-    {{-- <x-scroll-top-button/> --}}
+    <div class="md:invisible">
+        <x-scroll-top-button/>
+    </div>
 </div>
