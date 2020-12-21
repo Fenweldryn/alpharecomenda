@@ -38,7 +38,7 @@ class Edit extends Component
             'name' => $this->service->name,
             'email' => $this->service->email,
             'city' => $this->service->city,
-            'phone' => $this->service->phone,
+            'phone' => $this->service->phone, //TODO: trim e remover espaços
         ]);
 
         $keywords = Str::of($this->keywords)->trim()->lower()->explode(' ');
