@@ -47,6 +47,12 @@
             <x-jet-input-error for="keywords" class="mt-2" required/>
         </div>
 
+        @if (session()->has('success'))
+            <div class="text-green-500 bg-white shadow-md rounded-md p-4 ">
+                <i class="fas fa-check mr-2"> {{ session('success') }}</i>
+            </div>
+        @endif
+
         <div class="col-span-1 mt-5 text-right">
             <a href="{{ url('servicos') }}" class="px-4 py-2 text-center border border-transparent bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-black font-bold rounded-lg mr-2">
                 <i class="mr-2 fas fa-arrow-left"></i> Voltar
