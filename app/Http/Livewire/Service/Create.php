@@ -48,8 +48,14 @@ class Create extends Component
             'phone' => $phoneClean,
             'user_id' => auth()->user()->id
         ]);
-        
-        $keywords = Str::of($this->keywords)->trim()->lower()->replace([',', '.'], '')->explode(' ');
+
+        $keywords = Str::of($this->keywords)
+            ->trim()
+            ->lower()
+            ->replace([',', '.'], '')
+            ->replace([' - ', '-'], ' ')
+            ->replace([' de ', ' da ', ' e ', ' a '], ' ')
+            ->explode(' ');     
         $service->attachTags($keywords);
 
         session()->flash('success', 'Serviço cadastrado com sucesso.');

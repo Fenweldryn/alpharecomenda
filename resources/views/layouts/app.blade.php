@@ -7,6 +7,18 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLTHNYR3L9"></script>
+        <script>
+            if (window.location.hostname != 'localhost') {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+      
+                gtag('config', 'G-MLTHNYR3L9');                
+            }
+        </script>
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
