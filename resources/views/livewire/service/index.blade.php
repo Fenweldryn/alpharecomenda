@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    {{-- @if (session()->has('success')) --}}
+    @if (session()->has('success'))
         <div class="text-green-500 bg-white shadow-md rounded-md p-3 col-span-1 mb-3">
             <i class="fas fa-check mr-2"> {{ session('success') }}</i>
         </div>
-    {{-- @endif --}}
+    @endif
 
     <div class=" bg-white mx-3 md:mx-0 mb-10 rounded-md flex items-center w-auto p-3 shadow-sm border border-gray-200">
       <button class="outline-none focus:outline-none"><i class="fas fa-search h-4"></i></button>
