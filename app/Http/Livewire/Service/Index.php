@@ -16,7 +16,7 @@ class Index extends Component
     public function render()
     {
         $query = Service::selectRaw('services.*, SUM(recommended) as likes')
-            ->leftJoin('reactions', 'service_id', 'services.id')->groupBy('services.id');
+            ->leftJoin('reactions', 'service_id', 'services.id')->groupBy('services.id')->orderBy('likes', 'desc');
 
         if ($this->search) {
             $searchClean = Str::of($this->search)->lower();
