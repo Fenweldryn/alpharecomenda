@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Service;
 
+use Spatie\Tags\Tag;
 use App\Models\Service;
 use Livewire\Component;
 use Illuminate\Support\Str;
-use Spatie\Tags\Tag;
 
 class Index extends Component
 {
@@ -15,17 +15,20 @@ class Index extends Component
 
     public function render()
     {
+        $query = Service::selectRaw('services.*, SUM(recommended) as likes')
+            ->leftJoin('reactions', 'service_id', 'services.id')->groupBy('services.id');
+
         if ($this->search) {
             $searchClean = Str::of($this->search)->lower();
             $tags = Str::of($searchClean)->trim()->explode(' ');
-            $query = Service::select('services.*')->join('taggables', 'taggable_id', '=', 'services.id' )->join('tags', 'taggables.tag_id', '=', 'tags.id');
+            $query = $query->join('taggables', 'taggable_id', '=', 'services.id' )->join('tags', 'taggables.tag_id', '=', 'tags.id');
             foreach ($tags as $tag) {
                 $query->orWhere('tags.name', 'LIKE', "%$tag%");
                 $query->orWhere('services.name', 'LIKE', "%$tag%");
             }
             $this->services = $query->distinct()->get();
         } else {
-            $this->services = Service::all();
+            $this->services = $query->get();
         }
         return view('livewire.service.index');
     }

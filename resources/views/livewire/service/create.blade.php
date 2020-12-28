@@ -29,7 +29,7 @@
             </div>
     
             <div class="col-span-1 mt-4">
-                <label for="phone">Telefone com DDD</label>
+                <label for="phone">Telefone com DDD (somente números)</label>
                 <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" wire:model="phone" placeholder="" required>
                 <x-jet-input-error for="phone" class="mt-2" />
             </div>

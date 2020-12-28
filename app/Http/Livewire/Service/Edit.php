@@ -10,6 +10,7 @@ class Edit extends Component
 {
     public $keywords;
     public Service $service;
+    public bool $showDeleteConfirm;
 
     protected $rules = [
         'service.name' => 'required|min:3',
@@ -22,6 +23,7 @@ class Edit extends Component
     public function mount(Service $service)
     {
         $this->service = $service;
+        $this->showDeleteConfirm = false;
         $this->keywords = $service->tags->pluck('name')->implode(' ');
     }
 
@@ -52,5 +54,17 @@ class Edit extends Component
         $this->service->syncTags($keywords);
 
         session()->flash('success', 'Serviço editado com sucesso.');
+    }
+
+    public function showDeleteConfirm($show)
+    {
+        $this->showDeleteConfirm = $show;
+    }
+
+    public function delete()
+    {
+        $this->service->delete();
+        session()->flash('success', 'serviço excluído com sucesso.');
+        return redirect()->to('/servicos');
     }
 }

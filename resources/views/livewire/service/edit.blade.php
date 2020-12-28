@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-span-1 mt-4">
-            <label for="phone">Telefone</label>
+            <label for="phone">Telefone com DDD (somente números)</label>
             <input class="form-input rounded-md shadow-sm mt-1 block w-full" type="text" wire:model="service.phone" required>
             <x-jet-input-error for="phone" class="mt-2" />
         </div>
@@ -57,12 +57,30 @@
             <a href="{{ url('servicos') }}" class="px-4 py-2 text-center border border-transparent bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-black font-bold rounded-lg mr-2">
                 <i class="mr-2 fas fa-arrow-left"></i> Voltar
             </a>
-            {{-- <button type="submit" 
-                wire:loading.class="invisible"                 
-                wire:target="submit"
-                class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:shadow-outline-red disabled:opacity-25 transition ease-in-out duration-150">
-                <i class="fas fa-trash mr-1"></i> Excluir
-            </button> --}}
+            
+            <div class="inline-flex">   
+                @if ($showDeleteConfirm)
+                <button type="button" 
+                    wire:loading.class="invisible"                 
+                    wire:click="delete()"           
+                    class="inline-flex items-center mb-1 px-4 py-2 bg-red-800 border border-transparent rounded-md rounded-r-none font-semibold text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:shadow-outline-red disabled:opacity-25 transition ease-in-out duration-150">
+                    <i class="fas fa-trash mr-1"></i> Confirmar?
+                </button>
+                <button type="button" 
+                    wire:loading.class="invisible"                 
+                    wire:click="showDeleteConfirm(false)"           
+                    class="inline-flex items-center mb-1 px-4 py-2 bg-gray-600 border border-transparent rounded-md rounded-l-none font-semibold text-white uppercase tracking-widest hover:bg-gray-500 active:bg-gray-700 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                    <i class="fas fa-times mr-1"></i> Cancelar
+                </button> 
+                @else                   
+                <button type="button" 
+                    wire:loading.class="invisible"      
+                    wire:click="showDeleteConfirm(true)"           
+                    class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:shadow-outline-red disabled:opacity-25 transition ease-in-out duration-150">
+                    <i class="fas fa-trash mr-1"></i> Excluir
+                </button>
+                @endif
+            </div>
             <button type="submit" 
                 wire:loading.class="invisible"                 
                 wire:target="submit"

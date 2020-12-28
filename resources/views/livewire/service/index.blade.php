@@ -5,6 +5,12 @@
         </h2>
     </x-slot>
 
+    {{-- @if (session()->has('success')) --}}
+        <div class="text-green-500 bg-white shadow-md rounded-md p-3 col-span-1 mb-3">
+            <i class="fas fa-check mr-2"> {{ session('success') }}</i>
+        </div>
+    {{-- @endif --}}
+
     <div class=" bg-white mx-3 md:mx-0 mb-10 rounded-md flex items-center w-auto p-3 shadow-sm border border-gray-200">
       <button class="outline-none focus:outline-none"><i class="fas fa-search h-4"></i></button>
       <input type="text" wire:model.debounce.300ms="search" placeholder="busque um serviço" class="w-full pl-4 outline-none focus:outline-none bg-transparent rounded-md"> 
@@ -16,7 +22,6 @@
         class="block text-center mx-3 md:mx-0 w-auto md:w-52 ld:w-52 items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-white tracking-widest hover:bg-green-700 active:bg-green-900 focus:outline-none focus:border-green-900 focus:shadow-outline-green disabled:opacity-25 transition ease-in-out duration-150">
         <i class="fas fa-plus mr-1"></i> Cadastrar novo
     </a>
-    
     
     <div wire:loading class='block mt-5'>
         <i class="fas fa-spinner fa-pulse fa-5x"></i>
