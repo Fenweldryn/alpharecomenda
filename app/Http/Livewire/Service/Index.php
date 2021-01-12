@@ -11,7 +11,7 @@ class Index extends Component
 {
     public $services;
     public $search;
-    // protected $queryString = ['search'];
+    protected $queryString = ['search'];
 
     public function render()
     {
